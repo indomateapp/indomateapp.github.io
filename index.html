@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indomate — Developer</title>
+  <meta name="description" content="Indomate developer account. Mus7af — Bacalah: offline, local-first Quran reading app." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f1730;
+      --text:#eaf0ff;
+      --muted:#b8c2df;
+      --line:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+      --accent2:#61ffd1;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(122,162,255,.25), transparent 55%),
+        radial-gradient(700px 450px at 85% 25%, rgba(97,255,209,.18), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      gap:16px;flex-wrap:wrap;
+    }
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none}
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg,#7aa2ff,#61ffd1);
+    }
+    h1{margin:0;font-size:18px}
+    .muted{color:var(--muted);font-size:13px}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      padding:8px 12px;border-radius:999px;
+      font-size:13px;color:var(--muted);text-decoration:none;
+    }
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero h2{margin:0 0 10px;font-size:32px}
+    .hero p{margin:0;color:var(--muted);max-width:70ch}
+    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:11px 14px;border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;font-weight:600;font-size:14px;
+    }
+    .btn.primary{
+      border-color:rgba(122,162,255,.45);
+      background:linear-gradient(135deg,rgba(122,162,255,.28),rgba(97,255,209,.14));
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;margin-top:20px;
+    }
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--line);
+      background:rgba(15,23,48,.65);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    footer{
+      margin-top:22px;
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      font-size:13px;color:var(--muted);
+      display:flex;justify-content:space-between;flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="./index.html">
+        <div class="logo"></div>
+        <div>
+          <h1>Indomate</h1>
+          <div class="muted">Developer account • Local-first applications</div>
+        </div>
+      </a>
+
+      <nav>
+        <a class="chip" href="#apps">Apps</a>
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="./privacy.html">Privacy Policy</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Privacy-first applications, built to work offline.</h2>
+      <p>
+        Indomate publishes simple and reliable mobile applications designed to work
+        without accounts, tracking, or data collection.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#apps">Mus7af — Bacalah</a>
+        <a class="btn" href="./privacy.html">Privacy Policy</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card" id="apps">
+        <h3>Application</h3>
+        <p>
+          <strong>Mus7af — Bacalah</strong><br />
+          Offline Quran reading app. All data stays on your device.
+        </p>
+        <p class="muted" style="margin-top:10px">
+          Support: <a href="mailto:support@indomate.example">support@indomate.example</a>
+        </p>
+      </div>
+
+      <div class="card" id="about">
+        <h3>About Indomate</h3>
+        <p class="muted">
+          Indomate is an independent developer account focused on minimal,
+          privacy-respecting, and offline-first mobile applications.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Indomate</div>
+      <div><a href="./privacy.html">Privacy Policy</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
