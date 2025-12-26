@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Indomate</title>
+  <meta name="description" content="Indomate privacy policy. No data collection. Local-only processing." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f1730;
+      --text:#eaf0ff;
+      --muted:#b8c2df;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.65;
+    }
+    .wrap{max-width:900px;margin:0 auto;padding:28px 18px 60px}
+    a{color:var(--text)}
+    .card{
+      border:1px solid var(--line);
+      background:rgba(15,23,48,.65);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    h1{margin:0 0 10px;font-size:26px}
+    h2{margin-top:20px;font-size:16px}
+    p,li{color:var(--muted);font-size:14px}
+    ul{padding-left:18px}
+    footer{
+      margin-top:18px;
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      font-size:13px;color:var(--muted);
+      display:flex;justify-content:space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <a href="./index.html">← Back to home</a>
+
+    <main class="card">
+      <h1>Privacy Policy</h1>
+      <p class="muted">
+        Last updated: <span id="d"></span><br />
+        Developer: <strong>Indomate</strong><br />
+        Application: <strong>bacalah</strong>
+      </p>
+
+      <h2>1. Overview</h2>
+      <p>
+        Your privacy is important to us. This application does not collect,
+        store, process, or share any personal data.
+      </p>
+
+      <h2>2. Data Collection</h2>
+      <p><strong>No data is collected.</strong> This includes but is not limited to:</p>
+      <ul>
+        <li>Personal identifiers (name, email, phone number)</li>
+        <li>Advertising identifiers</li>
+        <li>Location data</li>
+        <li>Photos, contacts, or files</li>
+        <li>Payment or financial information</li>
+      </ul>
+
+      <h2>3. Local-Only Processing</h2>
+      <p>
+        All app functionality is handled locally on your device.
+        Any preferences or content remain stored on your device only
+        and are never transmitted to external servers.
+      </p>
+
+      <h2>4. Third Parties</h2>
+      <p>
+        We do not share data with third parties because no data is collected.
+      </p>
+
+      <h2>5. Analytics & Tracking</h2>
+      <p>
+        We do not use analytics, tracking tools, or advertising SDKs.
+      </p>
+
+      <h2>6. Permissions</h2>
+      <p>
+        If permissions are requested, they are used solely for local app
+        functionality and never for data collection.
+      </p>
+
+      <h2>7. Security</h2>
+      <p>
+        Since all data remains on your device, security depends on your
+        device’s operating system protections.
+      </p>
+
+      <h2>8. Children</h2>
+      <p>
+        This app does not knowingly collect personal data from anyone,
+        including children.
+      </p>
+
+      <h2>9. Changes</h2>
+      <p>
+        Any future updates to this policy will be reflected by the date above.
+      </p>
+
+      <h2>10. Contact</h2>
+      <p>
+        For questions, contact:  
+        <a href="mailto:privacy@indomate.example">privacy@indomate.example</a>
+      </p>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Indomate</div>
+      <div><a href="./index.html">Home</a></div>
+    </footer>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById("y").textContent = now.getFullYear();
+    document.getElementById("d").textContent = now.toLocaleDateString("en-US", {
+      year:"numeric", month:"long", day:"numeric"
+    });
+  </script>
+</body>
+</html>
