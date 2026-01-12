@@ -37,8 +37,11 @@
     }
     .brand{display:flex;gap:12px;align-items:center;text-decoration:none}
     .logo{
-      width:44px;height:44px;border-radius:14px;
-      background:linear-gradient(135deg,#7aa2ff,#61ffd1);
+      width:44px;
+      height:44px;
+      object-fit:contain;
+      border-radius:12px;
+      display:block;
     }
     h1{margin:0;font-size:18px}
     .muted{color:var(--muted);font-size:13px}
@@ -97,7 +100,7 @@
   <div class="wrap">
     <header>
       <a class="brand" href="./index.html">
-        <div class="logo"></div>
+        <img src="./logo.png" alt="Indomate logo" class="logo" />
         <div>
           <h1>Indomate</h1>
           <div class="muted">Developer account • Local-first applications</div>
@@ -110,10 +113,9 @@
     </header>
 
     <section class="hero">
-      <h2>Privacy-first applications, built to work offline.</h2>
+      <h2>Aplikasi mobile fokus Indonesia</h2>
       <p>
-        Indomate publishes simple and reliable mobile applications designed to work
-        without accounts, tracking, or data collection.
+        Baca, studi, dan konten multibahasa, cepat dan tanpa iklan.
       </p>
 
       <div class="cta">
@@ -137,8 +139,7 @@
       <div class="card" id="about">
         <h3>About Indomate</h3>
         <p class="muted">
-          Indomate is an independent developer account focused on minimal,
-          privacy-respecting, and offline-first mobile applications.
+          Baca, studi, dan konten multibahasa, cepat dan tanpa iklan.
         </p>
       </div>
     </section>
