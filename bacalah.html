@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bacalah — Quran Offline</title>
+  <meta name="description" content="bacalah — aplikasi Quran offline: baca, studi, dan konten multibahasa, cepat dan tanpa iklan." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f1730;
+      --text:#eaf0ff;
+      --muted:#b8c2df;
+      --line:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+      --accent2:#61ffd1;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(122,162,255,.25), transparent 55%),
+        radial-gradient(700px 450px at 85% 25%, rgba(97,255,209,.18), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(11,16,32,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{
+      max-width:1100px;margin:0 auto;
+      padding:14px 18px;
+      display:flex;justify-content:space-between;align-items:center;
+      gap:14px;flex-wrap:wrap;
+    }
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none}
+    .logo{
+      width:40px;height:40px;
+      object-fit:contain;border-radius:12px;display:block;
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:.2px}
+    .muted{color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      padding:8px 12px;border-radius:999px;
+      font-size:13px;color:var(--muted);
+      text-decoration:none;
+      transition:transform .12s ease, background .12s ease;
+    }
+    .chip:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(500px 250px at 20% 10%, rgba(122,162,255,.20), transparent 60%),
+        radial-gradient(500px 250px at 90% 30%, rgba(97,255,209,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative}
+    .hero h2{margin:0 0 10px;font-size:34px;line-height:1.1}
+    .hero p{margin:0;color:var(--muted);max-width:75ch}
+    .hero-badges{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      padding:8px 10px;border-radius:999px;
+      font-size:13px;color:var(--muted);
+    }
+    .dot{
+      width:9px;height:9px;border-radius:99px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 4px rgba(122,162,255,.12);
+    }
+
+    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:11px 14px;border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;font-weight:700;font-size:14px;
+      display:inline-flex;align-items:center;gap:10px;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color:rgba(122,162,255,.45);
+      background:linear-gradient(135deg,rgba(122,162,255,.28),rgba(97,255,209,.14));
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;margin-top:20px;
+    }
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(15,23,48,.65);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 10px}
+    .card p{margin:0;color:var(--muted)}
+    .card + .card{margin-top:18px}
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    @media(max-width:700px){.feature-grid{grid-template-columns:1fr}}
+    .feature{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px;
+    }
+    .feature strong{display:block;margin-bottom:6px}
+    .kpi{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    @media(max-width:700px){.kpi{grid-template-columns:1fr}}
+    .kpi .box{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px;
+    }
+    .kpi .num{font-size:18px;font-weight:800}
+    .kpi .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+
+    .shots{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    @media(max-width:900px){.shots{grid-template-columns:repeat(2, minmax(0,1fr))}}
+    @media(max-width:560px){.shots{grid-template-columns:1fr}}
+    .shot{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      overflow:hidden;
+    }
+    .shot .ph{
+      aspect-ratio: 9 / 16;
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(234,240,255,.55);
+      font-weight:700;
+      letter-spacing:.2px;
+      background:
+        radial-gradient(500px 250px at 20% 20%, rgba(122,162,255,.18), transparent 55%),
+        radial-gradient(500px 250px at 80% 35%, rgba(97,255,209,.12), transparent 55%),
+        rgba(255,255,255,.02);
+    }
+    .shot .cap{
+      padding:10px 12px;
+      border-top:1px solid var(--line);
+      font-size:13px;color:var(--muted);
+    }
+
+    .faq details{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:12px 14px;
+      margin-top:10px;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight:700;
+    }
+    .faq .ans{
+      margin-top:8px;color:var(--muted);
+    }
+
+    footer{
+      margin-top:22px;
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      font-size:13px;color:var(--muted);
+      display:flex;justify-content:space-between;flex-wrap:wrap;
+      gap:10px;
+    }
+    .smalllink{color:var(--muted);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.18)}
+    .smalllink:hover{color:var(--text);border-bottom-color:rgba(255,255,255,.35)}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="#top">
+        <img src="./logo.png" alt="Indomate logo" class="logo" />
+        <div>
+          <h1>bacalah</h1>
+          <div class="muted">Aplikasi Quran offline • cepat • tanpa iklan</div>
+        </div>
+      </a>
+
+      <nav>
+        <a class="chip" href="#fitur">Fitur</a>
+        <a class="chip" href="#tangkapan">Tampilan</a>
+        <a class="chip" href="#faq">FAQ</a>
+        <a class="chip" href="./privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap" id="top">
+    <section class="hero">
+      <h2>Aplikasi mobile fokus Indonesia</h2>
+      <p>
+        Baca, studi, dan konten multibahasa, cepat dan tanpa iklan.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge"><span class="dot"></span> Offline-first</span>
+        <span class="badge"><span class="dot"></span> Tanpa akun</span>
+        <span class="badge"><span class="dot"></span> Tanpa tracking</span>
+        <span class="badge"><span class="dot"></span> Ringan & cepat</span>
+      </div>
+
+      <div class="cta">
+        <!-- Ganti link ini kalau sudah ada -->
+        <a class="btn primary" href="#download">Download</a>
+        <a class="btn" href="#fitur">Lihat fitur</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card" id="fitur">
+        <h3>Fitur utama</h3>
+        <p>Dirancang untuk pengalaman membaca yang sederhana, cepat, dan nyaman.</p>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <strong>Offline</strong>
+            <div class="muted">Bisa dipakai tanpa koneksi. Data tetap di perangkat.</div>
+          </div>
+          <div class="feature">
+            <strong>Multibahasa</strong>
+            <div class="muted">Konten & terjemahan untuk kebutuhan belajar.</div>
+          </div>
+          <div class="feature">
+            <strong>Navigasi cepat</strong>
+            <div class="muted">Cari & lompat ke surat/ayat dengan cepat.</div>
+          </div>
+          <div class="feature">
+            <strong>Tanpa iklan</strong>
+            <div class="muted">Tidak ada pop-up, tidak ada gangguan.</div>
+          </div>
+        </div>
+
+        <div class="kpi">
+          <div class="box">
+            <div class="num">0</div>
+            <div class="lbl">Iklan / tracking</div>
+          </div>
+          <div class="box">
+            <div class="num">Offline</div>
+            <div class="lbl">Local-first experience</div>
+          </div>
+          <div class="box">
+            <div class="num">Cepat</div>
+            <div class="lbl">Ringan untuk harian</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="download">
+        <h3>Download</h3>
+        <p class="muted">Tambahkan link store saat sudah siap.</p>
+
+        <div class="cta" style="margin-top:14px">
+          <!-- TODO: ganti href dengan link Play Store/App Store -->
+          <a class="btn primary" href="#" aria-disabled="true">Google Play (soon)</a>
+          <a class="btn" href="#" aria-disabled="true">App Store (soon)</a>
+        </div>
+
+        <p class="muted" style="margin-top:12px">
+          Support: <a class="smalllink" href="mailto:pellet-65.oxfords@icloud.com">pellet-65.oxfords@icloud.com</a>
+        </p>
+
+        <div class="card" style="margin-top:14px">
+          <h3 style="margin:0 0 8px">Kenapa bacalah?</h3>
+          <p class="muted" style="margin:0">
+            Fokus pada pengalaman membaca & studi: cepat, multibahasa, dan tanpa iklan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="tangkapan" style="margin-top:18px">
+      <h3>Tampilan aplikasi</h3>
+      <p class="muted">Ganti placeholder ini dengan screenshot asli (mis. screenshot1.png, dst.).</p>
+
+      <div class="shots">
+        <div class="shot">
+          <!-- Ganti jadi <img src="./screenshot-1.png" alt="..." style="width:100%;display:block" /> -->
+          <div class="ph">Screenshot 1</div>
+          <div class="cap">Beranda / daftar surat</div>
+        </div>
+        <div class="shot">
+          <div class="ph">Screenshot 2</div>
+          <div class="cap">Pembaca ayat</div>
+        </div>
+        <div class="shot">
+          <div class="ph">Screenshot 3</div>
+          <div class="cap">Terjemahan / studi</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:18px">
+      <div class="card faq" id="faq">
+        <h3>FAQ</h3>
+
+        <details>
+          <summary>Apakah bacalah mengumpulkan data?</summary>
+          <div class="ans">Tidak. Tujuan bacalah adalah pengalaman local-first: tanpa akun, tanpa tracking, dan tanpa iklan.</div>
+        </details>
+
+        <details>
+          <summary>Apakah bisa dipakai tanpa internet?</summary>
+          <div class="ans">Bisa. Aplikasi dirancang untuk tetap berguna saat offline.</div>
+        </details>
+
+        <details>
+          <summary>Bahasa apa saja yang tersedia?</summary>
+          <div class="ans">Fokus Indonesia, dengan konten multibahasa untuk mendukung belajar.</div>
+        </details>
+      </div>
+
+      <div class="card" id="tentang">
+        <h3>Tentang</h3>
+        <p class="muted">
+          Baca, studi, dan konten multibahasa, cepat dan tanpa iklan.
+        </p>
+
+        <div class="cta" style="margin-top:14px">
+          <a class="btn" href="./privacy.html">Privacy Policy</a>
+          <a class="btn" href="mailto:pellet-65.oxfords@icloud.com">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> bacalah</div>
+      <div>
+        <a class="smalllink" href="./privacy.html">Privacy Policy</a>
+        <span> · </span>
+        <a class="smalllink" href="#top">Back to top</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
